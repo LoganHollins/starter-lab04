@@ -21,7 +21,7 @@ class Order extends Application {
 
         $neworder = $this->orders->create();
         $neworder->num = $order_num;
-        $neworder->date = date();
+        $neworder->date = date('Y-M-d H:m:s');
         $neworder->status = 'a';
         $neworder->total = 0;
         $this->orders->add($neworder);
@@ -71,8 +71,8 @@ class Order extends Application {
 
     // make a menu ordering column
     function make_column($category) {
-        //FIXME
-        return $items;
+
+        return $this->menu->some('category', $category);
     }
 
     // add an item to an order
